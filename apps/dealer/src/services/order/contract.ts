@@ -75,3 +75,25 @@ export interface IOrderResponse {
   success: true;
   data: IOrder;
 }
+
+// Orders List Query Params
+export interface IOrdersListParams {
+  status?: string;
+  type?: 'recent' | 'all';
+  page?: number;
+  limit?: number;
+}
+
+// Orders List Response
+export interface IOrdersListResponse {
+  success: true;
+  data: {
+    orders: IOrder[];
+    pagination: {
+      page: number;
+      limit: number;
+      total: number;
+      totalPages: number;
+    };
+  };
+}

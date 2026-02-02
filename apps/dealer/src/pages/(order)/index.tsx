@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
 import ImageCarousel from '../(searchPart)/components/ImageCarousal'
 import GetInTouch from '../(searchPart)/components/GetInTouch'
-import { useSearchParams, useParams } from 'react-router-dom'
+import { useSearchParams, useParams, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'motion/react'
 import successIcon from '@/assets/images/successIcon.png'
-import { Table, Spin } from 'antd'
+import { Table, Spin, Button } from 'antd'
 import type { ColumnsType } from 'antd/es/table'
 import { useOrder } from '@/services/order'
+import { ArrowLeftOutlined } from '@ant-design/icons'
 
 interface OrderConfirmationAnimationProps {
   onComplete: () => void
@@ -229,6 +230,7 @@ const ProductDetailsTable = ({ products, total }: { products: Product[], total?:
 const Order = () => {
   const { id } = useParams()
   const [searchParams] = useSearchParams()
+  const navigate = useNavigate()
   const orderStatus = searchParams.get('orderstatus')
   const [showAnimation, setShowAnimation] = useState(orderStatus === 'confirmed')
   const [animationComplete, setAnimationComplete] = useState(false)
@@ -307,7 +309,6 @@ const Order = () => {
       <div className="relative">
         {orderStatus === 'confirmed' && (
           <>
-
             <motion.div
               className="container mx-auto text-center pb-8 pt-[39px]"
               initial={{ opacity: 0 }}
@@ -363,6 +364,8 @@ const Order = () => {
 
         {orderStatus !== 'confirmed' && (
           <div className="container mx-auto px-4 py-9">
+            <Button className='mb-2 text-primary! px-0!' type='link' icon={<ArrowLeftOutlined />} onClick={() => navigate(-1)}>Back</Button>
+
             <p className="text-2xl font-medium mb-4">Order Details</p>
             <OrderSummaryCard orderData={orderData} />
             <ProductDetailsTable products={products} total={orderData.total} />

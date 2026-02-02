@@ -5,8 +5,20 @@ import type {
   ICreateOrderRequest,
   ICreateOrderResponse,
   IOrderResponse,
+  IOrdersListResponse,
+  IOrdersListParams,
 } from "./contract";
 import { queries } from "../queryKeys";
+
+// Get orders list
+export const useOrders: UseQueryType<IOrdersListResponse, [IOrdersListParams?]> = (
+  params,
+  options
+) =>
+  useQuery({
+    ...queries.order.list(params),
+    ...options,
+  });
 
 // Get order details
 export const useOrder: UseQueryType<IOrderResponse, [number]> = (
