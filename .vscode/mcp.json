@@ -1,5 +1,5 @@
 {
-  "mcpServers": {
+  "servers": {
     "gres-b2b": {
       "command": "C:\\Users\\Admin\\AppData\\Local\\Programs\\gres-b2b\\bin\\windows-amd64\\gres-b2b.exe",
       "args": ["mcp", "serve"]
