@@ -1,0 +1,29 @@
+{
+  "name": "hotbray-frontend",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "dev": "bun run --filter hotbray-* dev",
+    "dev:admin": "bun run --filter hotbray-admin dev",
+    "dev:dealer": "bun run --filter hotbray-dealer dev"
+  },
+  "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^5.91.3",
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@lukemorales/query-key-factory": "^1.3.4",
+    "@tanstack/react-query": "^5.90.20",
+    "axios": "^1.13.4"
+  }
+}
