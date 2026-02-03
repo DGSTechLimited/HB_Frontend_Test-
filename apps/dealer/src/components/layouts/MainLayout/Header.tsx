@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { ClockIcon } from '@/components/Icons/ClockIcon'
 import { TruckIcon } from '@/components/Icons/TruckIcon'
 import { MessageIcon } from '@/components/Icons/MessageIcon'
@@ -39,6 +39,7 @@ const menuItems = [
 ]
 
 const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams()
 
@@ -84,8 +85,17 @@ const Header = () => {
     },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 8);
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className='sticky top-0 z-40 header-shell'>
+    <header className={`sticky top-0 z-40 header-shell ${isScrolled ? "header-shell--scrolled" : ""}`}>
       <div className="flex w-full py-2 header-topbar">
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center gap-x-10">

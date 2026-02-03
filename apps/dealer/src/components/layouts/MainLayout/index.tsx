@@ -1,4 +1,4 @@
-import { Link, Outlet, useSearchParams } from "react-router-dom";
+import { Link, Outlet, useLocation, useSearchParams } from "react-router-dom";
 import Header from "./Header";
 import Cart from "@/components/Cart";
 import { Drawer } from "antd";
@@ -7,6 +7,7 @@ import PageTransition from "@/components/PageTransition";
 
 
 const MainLayout = () => {
+  const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams()
   const isCartOpen = searchParams.get('cart') === 'true'
 

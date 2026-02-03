@@ -45,11 +45,15 @@ const ImageCarousel = () => {
               onMouseEnter={() => swiperRef.current?.autoplay.stop()}
               onMouseLeave={() => swiperRef.current?.autoplay.start()}
             >
-              <img
-                src={image.url}
-                alt={image.alt}
-                className="carousel-image"
-              />
+              <div className="relative rounded-2xl p-2 border border-orange-300/40 bg-white/5 shadow-[0_0_0_0_rgba(255,140,0,0)] transition-all duration-300 hover:border-orange-400/80 hover:shadow-[0_0_28px_6px_rgba(255,140,0,0.25)]">
+                <div className="rounded-xl bg-white overflow-hidden">
+                  <img
+                    src={image.url}
+                    alt={image.alt}
+                    className="carousel-image"
+                  />
+                </div>
+              </div>
             </div>
           </SwiperSlide>
         ))}

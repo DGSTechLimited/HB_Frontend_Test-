@@ -18,7 +18,7 @@ const CarouselComponent = () => {
     const slides = [
         {
             id: 1,
-            image: '/car3.webp',
+            image: '/hero/hero-spareparts.png',
             title: (
                 <p className='text-[32px] font-light' style={{ lineHeight: '46px' }}>
                     Unique <span className='font-medium'>JLR range of</span> <br /> <span className="font-medium">products</span> to offer customers <br /> worldwide!
@@ -28,7 +28,7 @@ const CarouselComponent = () => {
         },
         {
             id: 2,
-            image: '/car2.webp',
+            image: '/hero/hero-spareparts.png',
             title: (
                 <p className='text-[32px] font-light' style={{ lineHeight: '46px' }}>
                     <span className="font-medium">Specialist for Original </span> Jaguar <br /> and Rover vehicle parts
@@ -38,7 +38,7 @@ const CarouselComponent = () => {
         },
         {
             id: 3,
-            image: '/car1.webp',
+            image: '/hero/hero-spareparts.png',
             title: (
                 <p className='text-[32px] font-light' style={{ lineHeight: '46px' }}>
                     Distributing quality spare <br /> parts throughout the world <br /> <span className="font-medium">since 1972.</span>
