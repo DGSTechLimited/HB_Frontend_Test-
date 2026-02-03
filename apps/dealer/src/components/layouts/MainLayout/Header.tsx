@@ -4,8 +4,7 @@ import { TruckIcon } from '@/components/Icons/TruckIcon'
 import { MessageIcon } from '@/components/Icons/MessageIcon'
 import { SupportIcon } from '@/components/Icons/SupportIcon'
 import logo from '@assets/images/HotbrayLogo.png'
-import { Link, useSearchParams } from 'react-router-dom'
-import { useNavigate, useLocation } from "react-router-dom";
+import { Link, useSearchParams, useLocation } from 'react-router-dom'
 import {
   UserOutlined,
   LogoutOutlined,
@@ -40,7 +39,6 @@ const menuItems = [
 ]
 
 const Header = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams()
 
@@ -86,42 +84,47 @@ const Header = () => {
     },
   ];
 
-  const handleMenuClick = ({ key }: { key: string }) => {
-    navigate(key);
-  };
-
   return (
-    <header className='sticky top-0 z-30 bg-white border-b border-neutral-200 shadow-sm' >
-      <div className="flex w-full py-3 bg-blue-50">
+    <header className='sticky top-0 z-40 header-shell'>
+      <div className="flex w-full py-2 header-topbar">
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center gap-x-10">
             <div className="flex items-center gap-x-2">
               <ClockIcon width={20} height={20} />
-              <span className='text-sm font-medium text-primary'>Open 24/7</span>
+              <span className='text-sm font-medium header-topbar__text'>Open 24/7</span>
             </div>
             <div className="flex items-center gap-x-2">
               <TruckIcon width={24} height={24} />
-              <span className='text-sm font-medium text-primary'>Fast Shipping & Delivery</span>
+              <span className='text-sm font-medium header-topbar__text'>Fast Shipping & Delivery</span>
             </div>
           </div>
           <div className="flex items-center gap-x-10">
             <div className="flex items-center gap-x-2">
               <MessageIcon width={24} height={24} />
-              <span className='text-sm font-medium text-primary'>hotbray08@gmail.com</span>
+              <span className='text-sm font-medium header-topbar__text'>hotbray08@gmail.com</span>
             </div>
             <div className="flex items-center gap-x-2">
               <SupportIcon width={20} height={20} />
-              <span className='text-sm font-medium text-primary'>hotbray08@gmail.com</span>
+              <span className='text-sm font-medium header-topbar__text'>hotbray08@gmail.com</span>
             </div>
           </div>
         </div>
       </div>
-      <div className="flex container mx-auto justify-between items-center py-3 ">
-        <img width={156} height={41} src={logo} alt="logo" className='h-10 w-auto' />
-        <div className="flex gap-x-5 items-center">
+      <div className="flex container mx-auto justify-between items-center py-4">
+        <div className="flex items-center gap-4">
+          <img width={156} height={41} src={logo} alt="logo" className='h-10 w-auto logo-clean' />
+        </div>
+        <div className="flex gap-x-6 items-center">
           {menuItems.map((item) => (
-            <Link className={`text-black! text-sm  ${location.pathname === item.key ? 'text-primary! font-medium' : 'text-gray-500'}`} key={item.key} to={item.key}>
-              {item.label}
+            <Link
+              className="nav-link"
+              data-active={location.pathname === item.key}
+              key={item.key}
+              to={item.key}
+            >
+              <span className="nav-link__label">
+                {item.label}
+              </span>
             </Link>
           ))}
         </div>
@@ -129,10 +132,10 @@ const Header = () => {
           <div onClick={handleOpenCart} className="flex cursor-pointer">
             <Badge size='small' styles={{
               indicator: {
-                backgroundColor: '#0C4394',
+                backgroundColor: '#FF8A3D',
               }
             }} count={cartCount} >
-              <ShoppingCartOutlined className='text-2xl!' />
+              <ShoppingCartOutlined className='text-2xl! text-slate-900 cart-icon' />
             </Badge>
           </div>
         </div>

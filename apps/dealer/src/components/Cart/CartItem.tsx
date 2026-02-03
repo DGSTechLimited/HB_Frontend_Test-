@@ -26,19 +26,20 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
     }
 
     return (
-        <div className='w-full flex border-b border-neutral-200 pb-3 flex-col'>
+        <div className='cart-item'>
             <div className="flex w-full flex-col">
                 <div className="flex w-full justify-between">
                     <div className="flex flex-col">
-                        <span className='font-medium text-base'>{item.product.code}</span>
+                        <span className='font-semibold text-base text-[#0B1220]'>{item.product.code}</span>
                         <span className='text-neutral-500 text-xs'>{item.product.name}</span>
                     </div>
                     <Button
                         size='small'
                         onClick={handleRemove}
                         loading={removeCartItem.isPending}
+                        className="cart-item__delete"
                     >
-                        <DeleteOutlined className='text-primary!' />
+                        <DeleteOutlined className='cart-item__delete-icon' />
                     </Button>
                 </div>
                 <div className="flex w-full justify-between items-center mt-2">
@@ -46,7 +47,7 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
                         productCode={item.product.code}
                         initialQuantity={item.quantity}
                     />
-                    <span className='text-base font-medium'>{item.formattedSubtotal}</span>
+                    <span className='text-base font-semibold text-[#0B1220]'>{item.formattedSubtotal}</span>
                 </div>
             </div>
         </div>

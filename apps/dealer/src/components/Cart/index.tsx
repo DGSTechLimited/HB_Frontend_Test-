@@ -21,7 +21,7 @@ const Cart = () => {
 
     return (
         <div className='flex flex-col h-full relative'>
-            <div className="flex flex-col gap-y-3 overflow-y-auto pb-32">
+            <div className="flex flex-col gap-y-3 overflow-y-auto pb-36 cart-drawer__items">
                 {items.length === 0 ? (
                     <div className="flex flex-col items-center justify-center mt-10">
                         <img
@@ -38,24 +38,24 @@ const Cart = () => {
                 )}
             </div>
             {items.length > 0 && summary && (
-                <div className="flex w-full flex-col absolute bottom-0 bg-white p-3 border-t border-neutral-200">
+                <div className="flex w-full flex-col cart-drawer__footer">
                     <div className="flex w-full justify-between items-center">
                         <div className="flex flex-col">
-                            <span className='text-base'>Subtotal</span>
+                            <span className='text-base text-[#0B1220] font-medium'>Subtotal</span>
                             <span className='text-neutral-500'>
                                 {summary.itemCount} {summary.itemCount === 1 ? 'Item' : 'Items'}
                             </span>
                         </div>
-                        <span className='text-2xl font-semibold'>{summary.formattedTotal}</span>
+                        <span className='text-2xl font-semibold text-[#0B1220]'>{summary.formattedTotal}</span>
                     </div>
                     <div className="flex gap-x-3">
                         <Link className='w-full' to="/cart">
-                            <Button size='large' className='w-full mt-3'>
+                            <Button size='large' className='w-full mt-3 cart-btn cart-btn--secondary'>
                                 View Cart
                             </Button>
                         </Link>
                         <Link className='w-full' to="/checkout">
-                            <Button size='large' type='primary' className='w-full mt-3'>
+                            <Button size='large' type='primary' className='w-full mt-3 cart-btn cart-btn--primary'>
                                 Checkout
                             </Button>
                         </Link>

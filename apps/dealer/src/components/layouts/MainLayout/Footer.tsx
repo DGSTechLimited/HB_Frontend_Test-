@@ -19,24 +19,27 @@ const Footer = () => {
         }
     ]
     return (
-        <div className='pt-10 bg-gray-700 w-full  bottom-0 px-20 pb-16.5 flex flex-col justify-end'>
+        <div className='footer-shell pt-10 w-full bottom-0 px-20 pb-16.5 flex flex-col justify-end'>
             <div>
                 <div className=' flex justify-between pb-4'>
                     <img src={logo} alt="logo" className='h-10' />
-                    <p className=' font-light text-[#FFFFFFB2] text-sm'>@ 2023 Hotbray. <br />
+                    <p className=' font-light footer-text-secondary text-sm'>@ 2023 Hotbray. <br />
                         All Rights Reserved. </p>
                 </div>
-                <hr className=' pb-8.5 border-t-[#FFFFFFB2]' />
+                <hr className=' pb-8.5 footer-divider' />
                 <div className=' flex justify-between'>
                     <div className='flex gap-5'>
                         {socialMedia.map((item) => (
-                            <p key={item.name} className=' text-sm text-[#FFFFFF94] flex items-center gap-3'><img src={item.icon} alt={item.name} className=' w-4 h-4' />{item.name}</p>
+                            <p key={item.name} className=' text-sm footer-text-secondary flex items-center gap-3 footer-social'>
+                                <img src={item.icon} alt={item.name} className=' w-4 h-4 footer-social-icon' />
+                                {item.name}
+                            </p>
                         ))}
                     </div>
                     <div className='flex gap-5'>
-                        <p className=' text-sm text-white border-r border-r-[#FFFFFF40] pr-5 '>Terms & Conditions</p>
+                        <p className=' text-sm footer-link border-r border-r-[rgba(255,255,255,0.3)] pr-5 '>Terms & Conditions</p>
 
-                        <p className=' text-sm text-white'>Privacy Policy</p>
+                        <p className=' text-sm footer-link'>Privacy Policy</p>
 
                     </div>
                 </div>

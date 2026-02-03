@@ -1,5 +1,4 @@
-import { CheckOutlined, CloseOutlined } from '@ant-design/icons'
-import { Button, InputNumber, message } from 'antd'
+import { message } from 'antd'
 import React, { useState, useEffect } from 'react'
 import { useUpdateCartItem } from '@/services/cart'
 
@@ -10,74 +9,66 @@ interface QuantityInputProps {
 
 const QuantityInput: React.FC<QuantityInputProps> = ({ productCode, initialQuantity }) => {
     const [quantity, setQuantity] = useState(initialQuantity)
-    const [isEditing, setIsEditing] = useState(false)
     const updateCartItem = useUpdateCartItem()
 
     useEffect(() => {
         setQuantity(initialQuantity)
     }, [initialQuantity])
 
-    const handleQuantityChange = (value: number | null) => {
-        if (value) {
-            setQuantity(value)
-            if (value !== initialQuantity) {
-                setIsEditing(true)
-            } else {
-                setIsEditing(false)
-            }
-        }
-    }
+    const clampQuantity = (value: number) => Math.max(1, Math.min(1000000, value))
 
-    const handleConfirm = () => {
+    const applyQuantityUpdate = (nextQuantity: number) => {
+        const safeQuantity = clampQuantity(nextQuantity)
+        setQuantity(safeQuantity)
+        if (safeQuantity === initialQuantity) return
         updateCartItem.mutate(
-            { productCode, quantity },
+            { productCode, quantity: safeQuantity },
             {
                 onSuccess: (response) => {
                     message.success(response.message)
-                    setIsEditing(false)
                 },
                 onError: () => {
                     message.error('Failed to update quantity')
                     setQuantity(initialQuantity)
-                    setIsEditing(false)
                 },
             }
         )
     }
 
-    const handleCancel = () => {
-        setQuantity(initialQuantity)
-        setIsEditing(false)
+    const handleIncrement = () => {
+        applyQuantityUpdate(quantity + 1)
+    }
+
+    const handleDecrement = () => {
+        applyQuantityUpdate(quantity - 1)
     }
 
     return (
-        <div className='flex items-center gap-x-2'>
-            <div className="flex">
-                <InputNumber
-                    className='rounded-r-none!'
-                    min={1}
-                    max={1000000}
-                    value={quantity}
-                    onChange={handleQuantityChange}
+        <div className='flex items-center gap-x-2 cart-qty'>
+            <div className="cart-qty__box">
+                <button
+                    type="button"
+                    className="cart-qty__step"
+                    onClick={handleDecrement}
+                    disabled={updateCartItem.isPending || quantity <= 1}
+                    aria-label="Decrease quantity"
+                >
+                    -
+                </button>
+                <span className="cart-qty__value" aria-live="polite">
+                    {quantity}
+                </span>
+                <button
+                    type="button"
+                    className="cart-qty__step"
+                    onClick={handleIncrement}
                     disabled={updateCartItem.isPending}
-                />
-                <span className="text-xs! text-neutral-600 p-2 border border-l-0 border-neutral-300 rounded-md rounded-l-none">Nos</span>
+                    aria-label="Increase quantity"
+                >
+                    +
+                </button>
             </div>
-            {isEditing && (
-                <div className="flex gap-x-1">
-                    <Button
-                        type='primary'
-                        icon={<CheckOutlined />}
-                        onClick={handleConfirm}
-                        loading={updateCartItem.isPending}
-                    />
-                    <Button
-                        icon={<CloseOutlined />}
-                        onClick={handleCancel}
-                        disabled={updateCartItem.isPending}
-                    />
-                </div>
-            )}
+            <span className="cart-qty__unit">Nos</span>
         </div>
     )
 }

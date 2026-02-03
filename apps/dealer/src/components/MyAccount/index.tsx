@@ -8,8 +8,9 @@ const MyAccount = () => {
 
     return (
         <div className='container mx-auto py-8 flex flex-col gap-y-5'>
-            <ProfileSection
-            />
+            <div className="profile-welcome-section">
+                <ProfileSection />
+            </div>
 
             <OrderStatsCards />
 

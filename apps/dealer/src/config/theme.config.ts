@@ -5,14 +5,14 @@ export const theme: (overrides?: ThemeConfig) => ThemeConfig = (overrides) => {
 
   return {
     token: {
-      colorPrimary: "#0C4394",
+      colorPrimary: "#00E5FF",
       fontFamily: "DM Sans, sans-serif",
       ...token,
     },
     components: {
       Button: {
-        defaultBorderColor: "#0C4394",
-        defaultColor: "#0C4394",
+        defaultBorderColor: "#00E5FF",
+        defaultColor: "#00E5FF",
         borderRadius: 9999,
         borderRadiusLG: 9999,
         ...components?.Button,

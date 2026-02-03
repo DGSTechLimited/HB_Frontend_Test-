@@ -1,7 +1,7 @@
 const OrderStatsCards = () => {
     return (
         <div className="grid grid-cols-4 gap-4">
-            <div className="flex bg-white rounded-2xl pl-5 pr-2 py-5 col-span-1 items-center hover:-translate-y-1 hover:-translate-x-1 transition-all duration-200 hover:shadow cursor-pointer">
+            <div className="stats-card flex col-span-1 items-center cursor-pointer">
                 <div className="flex">
                     <svg width="84" height="63" viewBox="0 0 84 63" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M42 62.0172C65.196 62.0172 84 60.6741 84 59.0172C84 57.3604 65.196 56.0172 42 56.0172C18.804 56.0172 0 57.3604 0 59.0172C0 60.6741 18.804 62.0172 42 62.0172Z" fill="#263238" fillOpacity="0.05" />
@@ -31,7 +31,7 @@ const OrderStatsCards = () => {
                 </div>
 
             </div>
-            <div className="flex bg-white rounded-2xl pl-5 pr-2 py-5 col-span-1 items-center hover:-translate-y-1 hover:-translate-x-1 transition-all duration-200 hover:shadow cursor-pointer">
+            <div className="stats-card flex col-span-1 items-center cursor-pointer">
                 <div className="flex">
                     <svg width="73" height="86" viewBox="0 0 73 86" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M40.4316 85.211C54.4819 85.211 65.872 83.836 65.872 82.1399C65.872 80.4438 54.4819 79.0688 40.4316 79.0688C26.3813 79.0688 14.9912 80.4438 14.9912 82.1399C14.9912 83.836 26.3813 85.211 40.4316 85.211Z" fill="#263238" fillOpacity="0.19" />
@@ -147,7 +147,7 @@ const OrderStatsCards = () => {
                 </div>
 
             </div>
-            <div className="flex bg-white rounded-2xl pl-5 pr-2 py-5 col-span-1 items-center hover:-translate-y-1 hover:-translate-x-1 transition-all duration-200 hover:shadow cursor-pointer">
+            <div className="stats-card flex col-span-1 items-center cursor-pointer">
                 <div className="flex">
                     <svg width="89" height="78" viewBox="0 0 89 78" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M83.0938 64.204C83.1692 64.2343 83.2535 64.2076 83.2998 64.1447L85.5536 61.1372C85.6029 61.0719 85.6023 60.9858 85.5518 60.9235L83.4754 58.3534C83.9733 57.3018 84.3507 56.2004 84.597 55.0658L87.8603 54.3068C87.941 54.2884 87.9938 54.2207 87.998 54.1412L88.1089 50.3842C88.1107 50.3077 88.0579 50.2359 87.979 50.2145L84.7483 49.2905C84.4089 47.2918 83.6736 45.3816 82.5788 43.6784L84.4059 40.8027C84.4498 40.7368 84.4433 40.6508 84.3899 40.5908L81.8067 37.8569C81.7503 37.7993 81.6655 37.7833 81.5919 37.8213L78.5974 39.4942C77.6835 38.842 76.6949 38.2943 75.654 37.8569L75.5009 34.4209C75.4944 34.3408 75.4356 34.2744 75.3561 34.2643L71.6745 33.5047C71.5956 33.4887 71.5136 33.5237 71.481 33.5961L69.9767 36.7068C68.8545 36.6926 67.7359 36.8042 66.6386 37.0421L64.5403 34.3023C64.4898 34.2393 64.4055 34.2174 64.3326 34.2447L60.8812 35.7366C60.8111 35.7668 60.7666 35.844 60.7761 35.9217L61.3251 39.312C60.6569 39.766 60.0201 40.2733 59.432 40.8294C59.2148 41.0335 58.9994 41.2519 58.7531 41.5142L55.4887 40.4852C55.4133 40.4609 55.3284 40.4929 55.2905 40.5594L53.3078 43.7568C53.2639 43.8227 53.2728 43.9117 53.3298 43.9692L55.6798 46.3987C55.2756 47.4639 54.9884 48.5766 54.8312 49.7077L51.6242 50.7296C51.5489 50.7539 51.4961 50.8275 51.5002 50.9046L51.7281 54.667C51.7323 54.7441 51.794 54.8076 51.8705 54.8207L55.1285 55.4669C55.4103 56.595 55.8198 57.6911 56.3521 58.7261L54.3469 61.3828C54.3006 61.4457 54.3006 61.5371 54.3511 61.6L56.688 64.5417C56.7396 64.5814 56.8049 64.5886 56.8666 64.5607L59.8605 63.2385C60.7417 64.0111 61.7149 64.6811 62.7552 65.2265L62.6336 68.4868C62.6318 68.5639 62.6846 68.6352 62.7576 68.6565L66.3639 69.7366C66.4392 69.7609 66.5211 69.7259 66.5627 69.657L68.2474 66.8816C69.4206 67.0014 70.6021 66.9848 71.7712 66.8335L73.5468 69.5746C73.5883 69.6398 73.6726 69.6671 73.7479 69.6434L77.318 68.4607C77.391 68.4334 77.4408 68.3622 77.4337 68.2821L77.2213 65.0336C78.2443 64.4574 79.1944 63.7631 80.0561 62.9637L83.0938 64.204ZM63.4846 45.149C67.1893 41.6531 73.0245 41.8228 76.5198 45.5276C80.0098 49.2324 79.8377 55.064 76.1383 58.5599C72.4364 62.0528 66.6018 61.8837 63.1083 58.1813C59.613 54.4771 59.7827 48.6419 63.4846 45.149Z" fill="#DBE4EC" />
@@ -174,7 +174,7 @@ const OrderStatsCards = () => {
                 </div>
 
             </div>
-            <div className="flex bg-white rounded-2xl pl-5 pr-2 py-5 col-span-1 items-center hover:-translate-y-1 hover:-translate-x-1 transition-all duration-200 hover:shadow cursor-pointer">
+            <div className="stats-card flex col-span-1 items-center cursor-pointer">
                 <div className="flex">
                     <svg width="65" height="100" viewBox="0 0 65 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M38.2034 60.597L29.4018 58.4885C27.8069 58.1065 27.3745 56.0416 28.6818 55.0516L34.3664 50.7473C35.3422 50.0083 36.7502 50.3455 37.2853 51.4466L40.4024 57.8594C41.1194 59.3344 39.7983 60.9791 38.2034 60.597Z" fill="black" />

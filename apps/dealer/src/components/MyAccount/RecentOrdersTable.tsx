@@ -77,7 +77,7 @@ const RecentOrdersTable = () => {
             title: 'Order Number',
             dataIndex: 'orderNumber',
             key: 'orderNumber',
-            render: (text: string) => <span className="font-medium text-primary">{text}</span>
+            render: (text: string) => <span className="font-semibold order-number">{text}</span>
         },
         {
             title: 'Date',
@@ -94,7 +94,7 @@ const RecentOrdersTable = () => {
             dataIndex: 'orderStatus',
             key: 'orderStatus',
             render: (status: string) => (
-                <Tag color={getStatusColor(status)}>
+                <Tag className={`order-status-badge order-status-badge--${status.toLowerCase()}`} color={getStatusColor(status)}>
                     {status.toUpperCase()}
                 </Tag>
             )
@@ -115,15 +115,15 @@ const RecentOrdersTable = () => {
     ]
 
     return (
-        <div className="flex flex-col w-full p-5 bg-white rounded-xl">
-            <div className="flex w-full justify-between">
+        <div className="recent-orders-card">
+            <div className="recent-orders-card__header">
                 <div className="flex flex-col">
-                    <span className='text-xl font-medium'>Recent Orders</span>
+                    <span className='text-xl font-semibold text-[#0B1220]'>Recent Orders</span>
                     <span className='text-sm text-gray-500 mt-1'>
                         View all your orders, track their status, and access detailed order information in one place.
                     </span>
                 </div>
-                <Button type='link' onClick={handleSeeAllOrders}>See All</Button>
+                <Button type='link' onClick={handleSeeAllOrders} className="recent-orders-card__link">See All</Button>
             </div>
             <div className="mt-5">
                 {error && (
@@ -141,6 +141,7 @@ const RecentOrdersTable = () => {
                     </div>
                 ) : (
                     <Table
+                        className="recent-orders-table"
                         columns={columns}
                         dataSource={orders}
                         pagination={{
