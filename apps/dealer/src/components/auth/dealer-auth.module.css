@@ -1,0 +1,326 @@
+:root {
+  --dealer-blue: #1e6bff;
+  --dealer-navy: #0b2a6f;
+  --dealer-ink: #0e1222;
+  --dealer-muted: #5d6b88;
+  --dealer-white: #ffffff;
+}
+
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 48px 20px;
+  background: radial-gradient(circle at top left, rgba(30, 107, 255, 0.25), transparent 45%),
+    radial-gradient(circle at 60% 20%, rgba(11, 42, 111, 0.35), transparent 50%),
+    linear-gradient(140deg, #0a1e52 0%, #050b1c 100%);
+}
+
+.card {
+  width: min(1020px, 94vw);
+  min-height: 610px;
+  border-radius: 28px;
+  background: #f8faff;
+  display: grid;
+  grid-template-columns: 42% 58%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(3, 12, 38, 0.35);
+  transition: transform 0.7s ease;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
+.diagonal {
+  position: absolute;
+  inset: -12% -20%;
+  background: linear-gradient(135deg, var(--dealer-blue), var(--dealer-navy));
+  clip-path: polygon(0 0, 66% 0, 40% 100%, 0 100%);
+  transform: translateX(0%);
+  transition: transform 0.75s ease, clip-path 0.75s ease;
+  z-index: 0;
+}
+
+.active .diagonal {
+  transform: translateX(54%);
+  clip-path: polygon(60% 0, 100% 0, 100% 100%, 34% 100%);
+}
+
+.leftPanel,
+.rightPanel {
+  position: relative;
+  z-index: 2;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.leftPanel {
+  color: #f2f6ff;
+  gap: 32px;
+}
+
+.leftContent {
+  max-width: 320px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.7rem;
+  margin: 0 0 16px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.headline {
+  margin: 0 0 16px;
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.subtext {
+  margin: 0 0 28px;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.6;
+}
+
+.ghostButton {
+  align-self: flex-start;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.ghostButton:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.18) 0 2px, transparent 3px),
+    radial-gradient(circle at 70% 35%, rgba(255, 255, 255, 0.12) 0 3px, transparent 4px),
+    radial-gradient(circle at 35% 70%, rgba(255, 255, 255, 0.12) 0 4px, transparent 6px),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08) 0 5px, transparent 8px);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.rightPanel {
+  color: var(--dealer-ink);
+  gap: 28px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, #eef3ff 100%);
+}
+
+.formHeader {
+  max-width: 380px;
+}
+
+.formTitle {
+  margin: 0 0 12px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.formSubtitle {
+  margin: 0;
+  color: var(--dealer-muted);
+  line-height: 1.6;
+}
+
+.formWrapper {
+  position: relative;
+  min-height: 320px;
+}
+
+.form {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transition: opacity 0.4s ease;
+}
+
+.formRegister {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.active .formRegister {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.active .formLogin {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.fieldBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fieldBlock label {
+  font-weight: 600;
+  color: var(--dealer-ink);
+  font-size: 0.92rem;
+}
+
+.fieldBlock input {
+  height: 46px;
+  border-radius: 12px;
+  border: 1px solid rgba(14, 18, 34, 0.12);
+  padding: 0 14px;
+  font-size: 0.96rem;
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fieldBlock input:focus-visible {
+  outline: none;
+  border-color: var(--dealer-blue);
+  box-shadow: 0 0 0 3px rgba(30, 107, 255, 0.2);
+}
+
+.rowBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.primaryButton {
+  padding: 12px 28px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #2a7bff, #0b2a6f);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(30, 107, 255, 0.25);
+  transition: transform 0.2s ease;
+}
+
+.primaryButton:hover {
+  transform: translateY(-1px);
+}
+
+.linkButton {
+  background: none;
+  border: none;
+  color: var(--dealer-blue);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.linkButton:focus-visible {
+  outline: 2px solid rgba(30, 107, 255, 0.4);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+.helperLine {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--dealer-muted);
+  font-size: 0.92rem;
+}
+
+.errorText {
+  color: #c62828;
+  font-size: 0.8rem;
+}
+
+.animation {
+  transform: translateX(120%);
+  opacity: 0;
+  filter: blur(10px);
+  transition: transform 0.7s ease, opacity 0.7s ease, filter 0.7s ease;
+  transition-delay: calc(0.1s * var(--i));
+}
+
+.card[data-mode="login"] .formLogin .animation,
+.card[data-mode="register"] .formRegister .animation {
+  transform: translateX(0%);
+  opacity: 1;
+  filter: blur(0);
+}
+
+@media (max-width: 960px) {
+  .card {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .leftPanel {
+    padding: 36px 28px 20px;
+  }
+
+  .rightPanel {
+    padding: 32px 28px 44px;
+  }
+
+  .diagonal {
+    inset: -20% 0 60% 0;
+    clip-path: polygon(0 0, 100% 0, 100% 68%, 0 100%);
+  }
+
+  .active .diagonal {
+    transform: translateY(14%);
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 0 70%);
+  }
+
+  .formWrapper {
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 560px) {
+  .card {
+    border-radius: 20px;
+  }
+
+  .headline {
+    font-size: 2rem;
+  }
+
+  .formTitle {
+    font-size: 1.7rem;
+  }
+
+  .primaryButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .rowBetween {
+    justify-content: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .diagonal,
+  .animation {
+    transition: none;
+  }
+}
