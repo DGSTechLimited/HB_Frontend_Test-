@@ -13,6 +13,13 @@ body,
   --color-textgray: #6a6a6a;
   --color-bordergray: #d9d9d9;
   --color-primary: #0C4394;
+  --color-navy-900: #0b1220;
+  --color-navy-800: #111a2b;
+  --color-electric: #2b6bff;
+  --color-accent: #ff7a1a;
+  --color-ice: #eef3ff;
+  --shadow-soft: 0 18px 40px -24px rgba(10, 18, 35, 0.6);
+  --shadow-bloom: 0 24px 60px -22px rgba(43, 107, 255, 0.45);
 }
 
 .sidebar-menu .ant-menu-item-selected {

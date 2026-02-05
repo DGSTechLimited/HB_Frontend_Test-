@@ -208,7 +208,7 @@ const SearchPage = () => {
                         <div className="flex col-span-8">
                             {!debouncedSearch ? (
                                 // Empty state when no search
-                                <div className="flex flex-col items-center justify-center py-20 w-full">
+                                <div className="flex w-full flex-col items-center justify-center rounded-[18px] border border-[rgba(255,138,0,0.25)] bg-[rgba(255,138,0,0.08)] py-20 shadow-[0_12px_24px_-20px_rgba(255,138,0,0.35)] transition-colors duration-200 hover:bg-[rgba(255,138,0,0.12)]">
                                     <img
                                         src="/empty_search.webp"
                                         alt="Start your search"
@@ -222,53 +222,55 @@ const SearchPage = () => {
                                     </p>
                                 </div>
                             ) : (
-                                <Table<IProduct>
-                                    className='w-full'
-                                    columns={columns}
-                                    dataSource={allProducts.flatMap((product: IProduct) => {
-                                        const price = getProductPrice(product)
-                                        const items = [{
-                                            id: product.id,
-                                            code: product.code,
-                                            name: product.name,
-                                            stock: product.stock,
-                                            price: formatPrice(price, product.currency),
-                                            superseding: product.superseding,
-                                            type: product.type,
-                                        }]
+                                <div className="w-full rounded-[18px] border border-[rgba(255,138,0,0.25)] bg-[rgba(255,138,0,0.08)] p-3 shadow-[0_12px_24px_-20px_rgba(255,138,0,0.35)] transition-colors duration-200 hover:bg-[rgba(255,138,0,0.12)]">
+                                    <Table<IProduct>
+                                        className='w-full'
+                                        columns={columns}
+                                        dataSource={allProducts.flatMap((product: IProduct) => {
+                                            const price = getProductPrice(product)
+                                            const items = [{
+                                                id: product.id,
+                                                code: product.code,
+                                                name: product.name,
+                                                stock: product.stock,
+                                                price: formatPrice(price, product.currency),
+                                                superseding: product.superseding,
+                                                type: product.type,
+                                            }]
 
-                                        // Add superseding product as an extra item if it exists
-                                        if (product.superseding) {
-                                            const supersedingPrice = getProductPrice(product.superseding as IProduct)
-                                            items.push({
-                                                id: product.superseding.id,
-                                                code: product.superseding.code,
-                                                name: product.superseding.name,
-                                                stock: product.superseding.stock,
-                                                price: formatPrice(supersedingPrice, product.superseding.currency),
-                                                superseding: null,
-                                                type: product.superseding.type,
-                                            })
-                                        }
+                                            // Add superseding product as an extra item if it exists
+                                            if (product.superseding) {
+                                                const supersedingPrice = getProductPrice(product.superseding as IProduct)
+                                                items.push({
+                                                    id: product.superseding.id,
+                                                    code: product.superseding.code,
+                                                    name: product.superseding.name,
+                                                    stock: product.superseding.stock,
+                                                    price: formatPrice(supersedingPrice, product.superseding.currency),
+                                                    superseding: null,
+                                                    type: product.superseding.type,
+                                                })
+                                            }
 
-                                        return items
-                                    })}
-                                    loading={isLoading}
-                                    pagination={false}
-                                    rowKey='id'
-                                />
+                                            return items
+                                        })}
+                                        loading={isLoading}
+                                        pagination={false}
+                                        rowKey='id'
+                                    />
+                                </div>
                             )}
                         </div>
 
                         {/* Right column - Cart (always visible) */}
-                        <div className="flex col-span-4 pl-3 border-l border-neutral-200 bg-white">
-                            <div className="flex sticky top-[150px] flex-col w-full h-[600px]">
-                                <div className="flex w-full justify-between items-center py-2 border-b border-neutral-200">
+                        <div className="flex col-span-4 pl-3">
+                            <div className="flex sticky top-[150px] flex-col w-full h-[600px] rounded-[18px] border border-[rgba(255,138,0,0.25)] bg-[rgba(255,138,0,0.08)] p-4 shadow-[0_12px_24px_-20px_rgba(255,138,0,0.35)] transition-colors duration-200 hover:bg-[rgba(255,138,0,0.12)]">
+                                <div className="flex w-full justify-between items-center py-2 border-b border-[rgba(255,138,0,0.25)]">
                                     <div className="flex gap-x-2 items-center">
-                                        <span className='text-base font-medium'>Your Cart</span>
+                                        <span className='text-base font-medium text-[#FF8A00]'>Your Cart</span>
                                         {
                                             !!cartCount &&
-                                            <span className='text-primary bg-blue-50 rounded-full px-2 py-1 text-xs font-semibold flex items-center justify-center'>
+                                            <span className='text-[#FF8A00] bg-[rgba(255,138,0,0.12)] rounded-full px-2 py-1 text-xs font-semibold flex items-center justify-center'>
                                                 {cartCount}
                                             </span>
                                         }

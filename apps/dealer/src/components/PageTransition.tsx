@@ -58,7 +58,6 @@ const PageTransition = () => {
     >
       <div className="page-transition__backdrop" />
       <div className="page-transition__content">
-        <span className="page-transition__label">Loading</span>
         <span className="page-transition__title">
           <span className="page-transition__title-accent">HOTBRAY</span>
         </span>

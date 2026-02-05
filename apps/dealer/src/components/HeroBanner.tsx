@@ -71,13 +71,17 @@ const HeroBanner = ({ slides = defaultSlides }: { slides?: HeroSlide[] }) => {
             key={`${slide.title}-${index}`}
             className={`hero-banner__slide ${activeIndex === index ? "is-active" : ""}`}
             style={{
-              backgroundImage: `linear-gradient(90deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 100%), url(${slide.imageUrl})`,
+              backgroundImage: `linear-gradient(90deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.05) 100%), url(${slide.imageUrl})`,
             }}
             aria-hidden={activeIndex !== index}
           >
-            <div className="hero-banner__content">
-              <h1>{slide.title}</h1>
-              <p>{slide.subtitle}</p>
+            <div
+              className={`hero-banner__content ${
+                prefersReducedMotion ? "" : "hero-banner__content--animate"
+              }`}
+            >
+              <h1 className="hero-banner__title">{slide.title}</h1>
+              <p className="hero-banner__subtitle">{slide.subtitle}</p>
               <div className="hero-banner__actions">
                 <Link className="hero-banner__btn hero-banner__btn--primary" to="/search">
                   Search Parts

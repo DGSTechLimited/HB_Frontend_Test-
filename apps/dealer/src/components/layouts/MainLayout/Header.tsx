@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { ClockIcon } from '@/components/Icons/ClockIcon'
-import { TruckIcon } from '@/components/Icons/TruckIcon'
-import { MessageIcon } from '@/components/Icons/MessageIcon'
-import { SupportIcon } from '@/components/Icons/SupportIcon'
 import logo from '@assets/images/HotbrayLogo.png'
 import { Link, useSearchParams, useLocation } from 'react-router-dom'
 import {
   UserOutlined,
   LogoutOutlined,
   ShoppingCartOutlined,
+  DownOutlined,
+  InboxOutlined,
 } from "@ant-design/icons";
-import { Badge, type MenuProps } from "antd";
+import { Badge, Dropdown, type MenuProps } from "antd";
 import { useLogout } from "@/services/auth";
 import { useCartCount } from "@/services/cart";
 
@@ -74,6 +72,11 @@ const Header = () => {
       label: "Profile",
     },
     {
+      key: "orders",
+      icon: <InboxOutlined />,
+      label: "Orders",
+    },
+    {
       type: "divider",
     },
     {
@@ -96,57 +99,77 @@ const Header = () => {
 
   return (
     <header className={`sticky top-0 z-40 header-shell ${isScrolled ? "header-shell--scrolled" : ""}`}>
-      <div className="flex w-full py-2 header-topbar">
-        <div className="container mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-x-10">
-            <div className="flex items-center gap-x-2">
-              <ClockIcon width={20} height={20} />
-              <span className='text-sm font-medium header-topbar__text'>Open 24/7</span>
-            </div>
-            <div className="flex items-center gap-x-2">
-              <TruckIcon width={24} height={24} />
-              <span className='text-sm font-medium header-topbar__text'>Fast Shipping & Delivery</span>
-            </div>
+      <div className="header-topbar">
+        <div className="container mx-auto flex flex-wrap items-center justify-between gap-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-600">
+          <div className="flex flex-wrap items-center gap-4">
+            <span>Open 24/7</span>
+            <span className="text-slate-300">|</span>
+            <span>Fast Shipping & Delivery</span>
+            <span className="text-slate-300">|</span>
+            <span>Genuine OEM</span>
           </div>
-          <div className="flex items-center gap-x-10">
-            <div className="flex items-center gap-x-2">
-              <MessageIcon width={24} height={24} />
-              <span className='text-sm font-medium header-topbar__text'>hotbray08@gmail.com</span>
-            </div>
-            <div className="flex items-center gap-x-2">
-              <SupportIcon width={20} height={20} />
-              <span className='text-sm font-medium header-topbar__text'>hotbray08@gmail.com</span>
-            </div>
+          <div className="hidden items-center gap-3 text-[0.7rem] text-slate-500 md:flex">
+            <span>Support: hotbray08@gmail.com</span>
           </div>
         </div>
       </div>
-      <div className="flex container mx-auto justify-between items-center py-4">
-        <div className="flex items-center gap-4">
-          <img width={156} height={41} src={logo} alt="logo" className='h-10 w-auto logo-clean' />
-        </div>
-        <div className="flex gap-x-6 items-center">
-          {menuItems.map((item) => (
-            <Link
-              className="nav-link"
-              data-active={location.pathname === item.key}
-              key={item.key}
-              to={item.key}
-            >
-              <span className="nav-link__label">
-                {item.label}
-              </span>
-            </Link>
-          ))}
-        </div>
-        <div className="flex gap-x-5 items-center">
-          <div onClick={handleOpenCart} className="flex cursor-pointer">
-            <Badge size='small' styles={{
-              indicator: {
-                backgroundColor: '#FF8A3D',
-              }
-            }} count={cartCount} >
-              <ShoppingCartOutlined className='text-2xl! text-slate-900 cart-icon' />
-            </Badge>
+
+      <div className="header-main">
+        <div className="container mx-auto grid grid-cols-1 items-center gap-4 px-6 lg:grid-cols-[1fr_auto_1fr] lg:h-16">
+          <div className="flex items-center justify-start gap-3">
+            <img width={156} height={41} src={logo} alt="logo" className='h-10 w-auto logo-clean' />
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-3 lg:flex-nowrap">
+            {menuItems.map((item) => (
+              <Link
+                className="nav-link"
+                data-active={location.pathname === item.key}
+                key={item.key}
+                to={item.key}
+              >
+                <span className="nav-link__label">
+                  {item.label}
+                </span>
+              </Link>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap items-center justify-end gap-3 lg:flex-nowrap">
+            <div className="flex items-center gap-3">
+              <Dropdown menu={{ items: userMenuItems }} placement="bottomRight">
+                <button
+                  type="button"
+                  className="flex h-10 items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 text-sm font-semibold text-slate-700 shadow-sm transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40"
+                  aria-label="Account menu"
+                >
+                  <UserOutlined className="text-slate-500" />
+                  <span className="hidden sm:inline">Priya</span>
+                  <DownOutlined className="text-slate-400" />
+                </button>
+              </Dropdown>
+
+              <button
+                type="button"
+                className="flex h-10 items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 text-sm font-semibold text-slate-700 shadow-sm transition-transform duration-200 hover:-translate-y-0.5"
+              >
+                <InboxOutlined className="text-slate-500" />
+                Orders
+              </button>
+
+              <div
+                className="flex h-10 items-center rounded-xl border border-slate-200 bg-white px-3 shadow-sm transition-transform duration-200 hover:-translate-y-0.5"
+                onClick={handleOpenCart}
+              >
+                <Badge size='small' styles={{
+                  indicator: {
+                    backgroundColor: '#FF8A3D',
+                  }
+                }} count={cartCount} >
+                  <ShoppingCartOutlined className='text-xl! text-slate-900 cart-icon' />
+                </Badge>
+              </div>
+            </div>
           </div>
         </div>
       </div>

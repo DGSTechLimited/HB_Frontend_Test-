@@ -4,6 +4,7 @@ import Cart from "@/components/Cart";
 import { Drawer } from "antd";
 import Footer from "./Footer";
 import PageTransition from "@/components/PageTransition";
+import CategoryRow from "@/components/CategoryRow";
 
 
 const MainLayout = () => {
@@ -20,15 +21,18 @@ const MainLayout = () => {
     <div className="flex flex-col w-full max-w-[100vw]">
       <PageTransition />
       <Header />
+      {location.pathname !== "/" && !location.pathname.startsWith("/search") ? (
+        <CategoryRow />
+      ) : null}
       <section className="marquee-shell">
         <div className="marquee-edge marquee-edge--left" />
         <div className="marquee-edge marquee-edge--right" />
         <div className="marquee-track">
           <div className="marquee-content">
-            Jaguar Spare Parts • Range Rover Spare Parts • OEM Quality • Genuine Parts • Fast Shipping • Premium Aftermarket
+            Jaguar Spare Parts * Range Rover Spare Parts * OEM Quality * Genuine Parts * Fast Shipping * Premium Aftermarket
           </div>
           <div className="marquee-content" aria-hidden="true">
-            Jaguar Spare Parts • Range Rover Spare Parts • OEM Quality • Genuine Parts • Fast Shipping • Premium Aftermarket
+            Jaguar Spare Parts * Range Rover Spare Parts * OEM Quality * Genuine Parts * Fast Shipping * Premium Aftermarket
           </div>
         </div>
       </section>
