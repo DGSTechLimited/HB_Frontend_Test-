@@ -412,13 +412,13 @@
   right: 0;
   text-align: right;
   align-items: flex-end;
-  transform: translateX(10%);
+  transform: translateX(10%) translateX(-65px);
 }
 
 .card:not(.isRegister) .toggleRight {
   opacity: 1;
   pointer-events: auto;
-  transform: translateX(0);
+  transform: translateX(0) translateX(-65px);
 }
 
 .card.isRegister .toggleLeft {

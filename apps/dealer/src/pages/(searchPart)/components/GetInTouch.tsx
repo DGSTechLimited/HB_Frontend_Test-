@@ -2,6 +2,7 @@ import getInTouchBg from '@assets/images/getInTouch.png'
 import { Button, Form, Input } from 'antd'
 import { useEffect, useRef, useState } from 'react'
 import '@/styles/getInTouchAnimations.css'
+import partsStyles from './getInTouchBannerParts.module.css'
 
 const GetInTouch = () => {
     const cardRef = useRef<HTMLDivElement | null>(null)
@@ -28,11 +29,21 @@ const GetInTouch = () => {
             className="container mx-auto min-h-[546px] rounded-[30px] bg-cover bg-center bg-no-repeat flex pt-8.5 mb-20.5"
             style={{ backgroundImage: `url(${getInTouchBg})` }}
         >
-            <div className=' w-[60%] pl-12.5 pb-[53px] flex flex-col justify-end '>
+            <div className=' w-[60%] pl-12.5 pb-[53px] flex flex-col justify-end relative overflow-hidden'>
                 <p className='text-[38px] font-light text-white' style={{ lineHeight: '49px', letterSpacing: '-3%' }}>Get <br />
                     <span className='font-medium'>Genuine and Aftermarket</span> <br />
                     Vehicle Spare Parts!</p>
                 <Button className='font-medium uppercase w-[189px] bg-white text-primary rounded-[32px]! h-12! mt-[22px] px-8.5!'>Explore More</Button>
+                <div className={partsStyles.partsLayer} aria-hidden="true">
+                    <span className={`${partsStyles.part} ${partsStyles.gear} ${partsStyles.p1}`} />
+                    <span className={`${partsStyles.part} ${partsStyles.disc} ${partsStyles.p2}`} />
+                    <span className={`${partsStyles.part} ${partsStyles.bolt} ${partsStyles.p3}`} />
+                    <span className={`${partsStyles.part} ${partsStyles.wrench} ${partsStyles.p4}`} />
+                    <span className={`${partsStyles.part} ${partsStyles.gear} ${partsStyles.p5}`} />
+                    <span className={`${partsStyles.part} ${partsStyles.disc} ${partsStyles.p6}`} />
+                    <span className={`${partsStyles.part} ${partsStyles.bolt} ${partsStyles.p7}`} />
+                    <span className={`${partsStyles.part} ${partsStyles.wrench} ${partsStyles.p8}`} />
+                </div>
             </div>
             <div className=' w-[40%] pr-8.5 pb-7'>
                 <div

@@ -148,13 +148,13 @@
   right: 0;
   text-align: right;
   align-items: flex-end;
-  transform: translateX(8px);
+  transform: translateX(8px) translateX(-240px);
 }
 
 .auth-card-animated:not(.active) .toggle-right {
   opacity: 1;
   pointer-events: auto;
-  transform: translateX(0);
+  transform: translateX(0) translateX(-240px);
 }
 
 .auth-card-animated.active .toggle-left {

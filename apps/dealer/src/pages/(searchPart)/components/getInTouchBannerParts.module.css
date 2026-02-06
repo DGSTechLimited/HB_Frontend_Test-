@@ -1,0 +1,157 @@
+.partsLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.part {
+  position: absolute;
+  opacity: 0.12;
+  filter: drop-shadow(0 0 16px rgba(30, 107, 255, 0.35))
+    drop-shadow(0 0 10px rgba(255, 122, 24, 0.18));
+  will-change: transform;
+}
+
+.gear {
+  background: conic-gradient(from 45deg, rgba(53, 198, 255, 0.55), rgba(255, 122, 24, 0.25));
+  border-radius: 50%;
+  mask: radial-gradient(circle, transparent 42%, #000 43% 62%, transparent 63%);
+}
+
+.disc {
+  background: radial-gradient(circle, rgba(53, 198, 255, 0.5), rgba(30, 107, 255, 0.2));
+  border-radius: 50%;
+  mask: radial-gradient(circle, transparent 34%, #000 35% 60%, transparent 61%);
+}
+
+.bolt {
+  background: linear-gradient(145deg, rgba(255, 122, 24, 0.6), rgba(30, 107, 255, 0.2));
+  clip-path: polygon(40% 0, 65% 0, 55% 42%, 80% 42%, 35% 100%, 45% 58%, 20% 58%);
+}
+
+.wrench {
+  background: linear-gradient(135deg, rgba(30, 107, 255, 0.5), rgba(255, 122, 24, 0.2));
+  mask: radial-gradient(circle at 20% 20%, transparent 12%, #000 13% 35%, transparent 36%),
+    linear-gradient(#000 0 0);
+}
+
+.p1 {
+  top: 8%;
+  left: 6%;
+  width: 64px;
+  height: 64px;
+  animation: floatA 22s ease-in-out infinite alternate, spin 36s linear infinite;
+}
+
+.p2 {
+  top: 18%;
+  right: 10%;
+  width: 46px;
+  height: 46px;
+  animation: floatB 18s ease-in-out infinite alternate, spin 40s linear infinite;
+  opacity: 0.1;
+}
+
+.p3 {
+  top: 36%;
+  left: 14%;
+  width: 72px;
+  height: 72px;
+  animation: floatC 26s ease-in-out infinite alternate, spin 34s linear infinite;
+}
+
+.p4 {
+  bottom: 16%;
+  right: 14%;
+  width: 60px;
+  height: 60px;
+  animation: floatD 20s ease-in-out infinite alternate, spin 38s linear infinite;
+}
+
+.p5 {
+  top: 6%;
+  right: 34%;
+  width: 52px;
+  height: 52px;
+  animation: floatA 24s ease-in-out infinite alternate, spin 30s linear infinite;
+  filter: blur(1px) drop-shadow(0 0 14px rgba(30, 107, 255, 0.35));
+}
+
+.p6 {
+  bottom: 10%;
+  left: 8%;
+  width: 84px;
+  height: 84px;
+  animation: floatB 28s ease-in-out infinite alternate, spin 42s linear infinite;
+  opacity: 0.09;
+}
+
+.p7 {
+  top: 54%;
+  right: 8%;
+  width: 36px;
+  height: 36px;
+  animation: floatC 16s ease-in-out infinite alternate, spin 26s linear infinite;
+}
+
+.p8 {
+  bottom: 30%;
+  left: 30%;
+  width: 58px;
+  height: 58px;
+  animation: floatD 21s ease-in-out infinite alternate, spin 32s linear infinite;
+  filter: blur(1px) drop-shadow(0 0 12px rgba(53, 198, 255, 0.3));
+}
+
+@keyframes floatA {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(18px, -20px, 0);
+  }
+}
+
+@keyframes floatB {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-16px, -18px, 0);
+  }
+}
+
+@keyframes floatC {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(14px, 18px, 0);
+  }
+}
+
+@keyframes floatD {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-12px, 16px, 0);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .part {
+    animation: none;
+    opacity: 0.08;
+  }
+}
